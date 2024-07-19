@@ -1,0 +1,64 @@
+<head>
+  <style>
+    .custom-select {
+      background-color: #f8f9fa;
+      border-color: #ced4da;
+      color: #495057;
+    }
+    
+  </style>
+
+</head>
+<h1 class="display-4 text-center my-4"><%= action_name.capitalize %> Employee</h1>
+
+<%= form_with(model: @employee, local: true, class: 'container') do |form| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :email %>
+        <%= form.email_field :email, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :designation %>
+        <%= form.text_field :designation, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :department_id, 'Department' %>
+        <%= form.collection_select :department_id, @departments, :id, :name, prompt: 'Select Department', class: 'form-control custom-select' %>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6">
+            <%= link_to 'Back', employees_path, class: 'btn btn-secondary btn-block' %>
+          </div>
+          <div class="col-md-6">
+            <%= form.submit 'Create Employee', class: 'btn btn-primary btn-block' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
